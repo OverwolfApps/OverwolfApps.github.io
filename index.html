@@ -9,12 +9,13 @@
 		<script src = "https://github.com/jongha/jquery-jsontotable/raw/master/dist/jquery.jsontotable.min.js" type="text/javascript"></script>
 	</head>
 	<body linkifying="true">
-		<header class="site-header"/><script type="text/javascript">
+		<header class="site-header"/>
 		<div id="jsontotable" class="jsontotable"></div>
-		$.getJSON( "https://crossorigin.me/http://apps.overwolf.com/prod/OWStoreExtentions.json", function( data ) {
-			$.jsontotable(data, { id: '#jsontotable', header: false });
-		});
-	</script>
+		<script type="text/javascript">
+			$.getJSON( "https://crossorigin.me/http://apps.overwolf.com/prod/OWStoreExtentions.json", function( data ) {
+				$.jsontotable(data, { id: '#jsontotable', header: false });
+			});
+		</script>
 	</body>
 </html>
 

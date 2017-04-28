@@ -41,7 +41,7 @@
 			        if( isURL && (/\.(gif|jpg|jpeg|tiff|png)$/i).test(match)) {
 					return '<img src="'+match.replace('"','')+'"/>'
 				}
-				if (isURL){
+				else if (isURL){
 					return '<a href="' + match.replace('"','') + '">' + match + '</a>';
 				}
 				return '<span class="' + cls + '">' + match + '</span>';

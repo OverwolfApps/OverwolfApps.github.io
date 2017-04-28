@@ -16,7 +16,8 @@
 		</style>
 	</head>
 	<body linkifying="true">
-		<h1>Overwolf Apps</h1>
+		<h1>Overwolf Apps</h1><br>
+		<h3 id="loading">Loading...</h3>
 		<!--div id="jsontotable"></div-->
 		<script type="text/javascript">
 			function syntaxHighlight(json) {
@@ -38,7 +39,7 @@
 				    cls = 'null';
 				}
 				isURL = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})/.test(match)
-			        if( isURL && (/\.(gif|jpg|jpeg|tiff|png)$/i).test(match)) {
+			        if( isURL && (/\.(gif|jpg|jpeg|tiff|png)"$/i).test(match)) {
 					return '<img src="'+match.replace('"','')+'"/>'
 				}
 				else if (isURL){
@@ -49,6 +50,9 @@
 			}
 			$.getJSON( "https://crossorigin.me/http://apps.overwolf.com/prod/OWStoreExtentions.json", function( data ) {
 				document.body.appendChild(document.createElement('pre')).innerHTML = syntaxHighlight(data);
+				var element = document.getElementById("loading");
+				element.parentNode.removeChild(element);
+				console.log("Finished loading apps...");
 			});
 		</script>
 	</body>

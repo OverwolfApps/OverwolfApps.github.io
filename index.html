@@ -14,10 +14,10 @@
 		  type: 'GET',
 		  dataType: 'text',
 		  timeout: 1000,
-		  error: function (request, error) {
-			console.log(arguments);
-			alert(" Can't do because: " + error);
-		  },
+		  error: function(xhr, status, error) {
+		  var err = eval("(" + xhr.responseText + ")");
+		  alert(err.Message);
+		},
 		  success: function(strData, status, xhr){
 		    console.log(arguments);
 		    console.log(xhr.responseXML, xhr.responseText);

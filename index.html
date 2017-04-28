@@ -20,6 +20,20 @@
 		<h3 id="loading">Loading...</h3>
 		<!--div id="jsontotable"></div-->
 		<script type="text/javascript">
+			var getUrlParameter = function getUrlParameter(sParam) {
+			    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+				sURLVariables = sPageURL.split('&'),
+				sParameterName,
+				i;
+
+			    for (i = 0; i < sURLVariables.length; i++) {
+				sParameterName = sURLVariables[i].split('=');
+
+				if (sParameterName[0] === sParam) {
+				    return sParameterName[1] === undefined ? true : sParameterName[1];
+				}
+			    }
+			};
 			function syntaxHighlight(json) {
 			    if (typeof json != 'string') {
 				 json = JSON.stringify(json, undefined, 2);
@@ -39,7 +53,7 @@
 				    cls = 'null';
 				}
 				isURL = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})/.test(match)
-			        if( isURL && (/\.(gif|jpg|jpeg|tiff|png)"$/i).test(match)) {
+			        if( isURL && (/\.(gif|jpg|jpeg|tiff|png)"$/i).test(match) && getUrlParameter('images')) {
 					return '<a href="' + match.replace('"','') + '">' + match + '</a> <img src="'+match.replace('"','')+'" height="16" width="16"/>'
 				}
 				else if (isURL){

@@ -9,9 +9,12 @@
 	</head>
 	<body linkifying="true">
 		<header class="site-header"/><script type="text/javascript">
+		$.getJSON( "ajax/test.json", function( data ) {
+			alert(data);
+		});
 		$.ajax({
 		  dataType: 'json',
-		  url: 'https://apps.overwolf.com/prod/OWStoreExtentions.json.gz',
+		  url: 'https://apps.overwolf.com/prod/OWStoreExtentions.json',
 		 error: function(xhr, status, error) {
 			alert(status);
 			alert(error);

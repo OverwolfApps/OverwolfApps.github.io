@@ -15,8 +15,10 @@
 		  dataType: 'text',
 		  timeout: 1000,
 		  error: function(xhr, status, error) {
-		  var err = eval("(" + xhr.responseText + ")");
-		  alert(err.Message);
+			document.write(status);
+			document.write(error);
+		  	var err = eval("(" + xhr.responseText + ")");
+		  	alert(err.Message);
 		},
 		  success: function(strData, status, xhr){
 		    console.log(arguments);

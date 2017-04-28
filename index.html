@@ -16,8 +16,8 @@
 		<script type="text/javascript">
 			$.getJSON( "https://crossorigin.me/http://apps.overwolf.com/prod/OWStoreExtentions.json", function( data ) {
 				$( "body" ).append( JSON.stringify(data) );
-				$.jsontotable(JSON.stringify(data, { id: '#jsontotable', header: false });
-				$.jsontotable(JSON.stringify(data, { id: '#jsontotable', header: true });
+				$.jsontotable(JSON.stringify(data), { id: '#jsontotable', header: false });
+				$.jsontotable(JSON.stringify(data), { id: '#jsontotable', header: true });
 				$( "body" ).append( "<p>REALLY GREAT</p>" );
 			});
 		</script>

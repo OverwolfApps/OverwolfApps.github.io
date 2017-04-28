@@ -34,7 +34,8 @@
 			    });
 			}
 			$.getJSON( "https://crossorigin.me/http://apps.overwolf.com/prod/OWStoreExtentions.json", function( data ) {
-				$("body").append(syntaxHighlight(data));
+				document.body.appendChild(document.createElement('pre')).innerHTML = syntaxHighlight(data);
+				//$("body").append(syntaxHighlight(data));
 				//$.jsontotable(JSON.stringify(data), { id: '#jsontotable', header: false });
 				//$.jsontotable(JSON.stringify(data), { id: '#jsontotable', header: true });
 				//$( "body" ).append( "<p>REALLY GREAT</p>" );

@@ -1,25 +1,38 @@
-hello world!
-<script type="text/javascript">
-    $.ajax({
-      url: 'http://apps.overwolf.com/prod/OWStoreExtentions.json.gz',
-      type: 'GET',
-      dataType: 'text',
-      timeout: 1000,
-      error: function(){
-          alert('Error loading document');
-      },
-      success: function(strData, status, xhr){
-        console.log(arguments);
-        console.log(xhr.responseXML, xhr.responseText);
-        var charData    = strData.split('').map(function(x){return x.charCodeAt(0);});
-        // Turn number array into byte-array
-        var binData     = new Uint8Array(charData);
-        // Pako magic
-        var data        = pako.inflate(binData);
-        // Convert gunzipped byteArray back to ascii string:
-        var strData     = String.fromCharCode.apply(null, new Uint8Array(data));
-        // Output to console
-        alert(strData);
-      }
-  });
-</script>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Overwolf Apps</title>
+		<meta name="description" content="Overwolf Apps Github Pages">
+	</head>
+	<script type="text/javascript">
+		$.ajax({
+		  url: 'http://apps.overwolf.com/prod/OWStoreExtentions.json.gz',
+		  type: 'GET',
+		  dataType: 'text',
+		  timeout: 1000,
+		  error: function(){
+		      alert('Error loading document');
+		  },
+		  success: function(strData, status, xhr){
+		    console.log(arguments);
+		    console.log(xhr.responseXML, xhr.responseText);
+		    var charData    = strData.split('').map(function(x){return x.charCodeAt(0);});
+		    // Turn number array into byte-array
+		    var binData     = new Uint8Array(charData);
+		    // Pako magic
+		    var data        = pako.inflate(binData);
+		    // Convert gunzipped byteArray back to ascii string:
+		    var strData     = String.fromCharCode.apply(null, new Uint8Array(data));
+		    // Output to console
+		    alert(strData);
+		  }
+		});
+	</script>
+	<body linkifying="true">
+		<header class="site-header"/>
+		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+	</body>
+</html>
+

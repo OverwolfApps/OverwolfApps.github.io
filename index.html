@@ -6,8 +6,8 @@
 		<title>Overwolf Apps</title>
 		<meta name="description" content="Overwolf Apps Github Pages">
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-		<!--<script type="text/javascript" src="https://raw.githubusercontent.com/jongha/jquery-jsontotable/master/dist/jquery.jsontotable.min.js"></script>-->
-		<script type="text/javascript" src="jquery.jsontotable.min.js"></script>
+		<!--<script type="text/javascript" src="https://raw.githubusercontent.com/jongha/jquery-jsontotable/master/dist/jquery.jsontotable.min.js"></script>
+		<script type="text/javascript" src="jquery.jsontotable.min.js"></script>-->
 	</head>
 	<body linkifying="true">
 		<!--header class="site-header"/-->
@@ -15,10 +15,12 @@
 		<div id="jsontotable" class="jsontotable">jsontable</div>
 		<script type="text/javascript">
 			$.getJSON( "https://crossorigin.me/http://apps.overwolf.com/prod/OWStoreExtentions.json", function( data ) {
-				$( "body" ).append( JSON.stringify(data) );
-				$.jsontotable(JSON.stringify(data), { id: '#jsontotable', header: false });
-				$.jsontotable(JSON.stringify(data), { id: '#jsontotable', header: true });
-				$( "body" ).append( "<p>REALLY GREAT</p>" );
+				document.body.innerHTML = "";
+				document.body.appendChild(document.createTextNode(JSON.stringify(obj, null, 4)));
+				//$( "body" ).append( JSON.stringify(data) );
+				//$.jsontotable(JSON.stringify(data), { id: '#jsontotable', header: false });
+				//$.jsontotable(JSON.stringify(data), { id: '#jsontotable', header: true });
+				//$( "body" ).append( "<p>REALLY GREAT</p>" );
 			});
 		</script>
 	</body>

@@ -6,14 +6,16 @@
 		<title>Overwolf Apps</title>
 		<meta name="description" content="Overwolf Apps Github Pages">
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-		<script type="text/javascript" src="https://raw.githubusercontent.com/jongha/jquery-jsontotable/master/dist/jquery.jsontotable.min.js"></script>
+		<!--<script type="text/javascript" src="https://raw.githubusercontent.com/jongha/jquery-jsontotable/master/dist/jquery.jsontotable.min.js"></script>-->
 		<script type="text/javascript" src="jquery.jsontotable.min.js"></script>
 	</head>
 	<body linkifying="true">
-		<header class="site-header"/>
+		<!--header class="site-header"/-->
+		<b1>Test</b1>
 		<div id="jsontotable" class="jsontotable"></div>
 		<script type="text/javascript">
 			$.getJSON( "https://crossorigin.me/http://apps.overwolf.com/prod/OWStoreExtentions.json", function( data ) {
+				document.currentScript.insertAdjacentHTML('beforebegin', 'test test test');
 				$.jsontotable(data, { id: '#jsontotable', header: false });
 			});
 		</script>

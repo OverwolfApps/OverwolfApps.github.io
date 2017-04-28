@@ -14,8 +14,9 @@
 		  type: 'GET',
 		  dataType: 'text',
 		  timeout: 1000,
-		  error: function(){
-		      alert('Error loading document');
+		  error: function (request, error) {
+			console.log(arguments);
+			alert(" Can't do because: " + error);
 		  },
 		  success: function(strData, status, xhr){
 		    console.log(arguments);

@@ -6,7 +6,6 @@
 		<title>Overwolf Apps</title>
 		<meta name="description" content="Overwolf Apps Github Pages">
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-		<!--script type="text/javascript" src="https://raw.githubusercontent.com/jongha/jquery-jsontotable/master/dist/jquery.jsontotable.min.js"-->
 		<style>
 			pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
 			.string { color: green; }
@@ -38,15 +37,14 @@
 				} else if (/null/.test(match)) {
 				    cls = 'null';
 				}
+				if (/(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})/.test(match)){
+					return '<a href="' + match + '">' + match + '</a>';
+				}
 				return '<span class="' + cls + '">' + match + '</span>';
 			    });
 			}
 			$.getJSON( "https://crossorigin.me/http://apps.overwolf.com/prod/OWStoreExtentions.json", function( data ) {
 				document.body.appendChild(document.createElement('pre')).innerHTML = syntaxHighlight(data);
-				//$("body").append(syntaxHighlight(data));
-				//$.jsontotable(JSON.stringify(data), { id: '#jsontotable', header: false });
-				//$.jsontotable(JSON.stringify(data), { id: '#jsontotable', header: true });
-				//$( "body" ).append( "<p>REALLY GREAT</p>" );
 			});
 		</script>
 	</body>

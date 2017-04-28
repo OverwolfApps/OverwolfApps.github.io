@@ -10,28 +10,10 @@
 	<body linkifying="true">
 		<header class="site-header"/><script type="text/javascript">
 		$.ajax({
+		  dataType: 'json',
 		  url: 'https://apps.overwolf.com/prod/OWStoreExtentions.json.gz',
-		  type: 'GET',
-		  dataType: 'text',
-		  timeout: 1000,
-		  error: function(xhr, status, error) {
-			document.write(status);
-			document.write(error);
-		  	var err = eval("(" + xhr.responseText + ")");
-		  	alert(err.Message);
-		},
-		  success: function(strData, status, xhr){
-		    console.log(arguments);
-		    console.log(xhr.responseXML, xhr.responseText);
-		    var charData    = strData.split('').map(function(x){return x.charCodeAt(0);});
-		    // Turn number array into byte-array
-		    var binData     = new Uint8Array(charData);
-		    // Pako magic
-		    var data        = pako.inflate(binData);
-		    // Convert gunzipped byteArray back to ascii string:
-		    var strData     = String.fromCharCode.apply(null, new Uint8Array(data));
-		    // Output to console
-		    alert(strData);
+		  success: function (json) {
+		    alert(JSON.stringify(json);
 		  }
 		});
 	</script>

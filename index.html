@@ -13,12 +13,12 @@
 		  dataType: 'json',
 		  url: 'https://apps.overwolf.com/prod/OWStoreExtentions.json.gz',
 		 error: function(xhr, status, error) {
--		  var err = eval("(" + xhr.responseText + ")");
--		  alert(err.Message);
-+			alert(status);
-+			alert(error);
-+		  	var err = eval("(" + xhr.responseText + ")");
-+		  	alert(err.Message);
+		  var err = eval("(" + xhr.responseText + ")");
+		  alert(err.Message);
+			alert(status);
+			alert(error);
+		  	var err = eval("(" + xhr.responseText + ")");
+		  	alert(err.Message);
  		},
 		  success: function (json) {
 		    alert(JSON.stringify(json));

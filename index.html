@@ -9,21 +9,8 @@
 	</head>
 	<body linkifying="true">
 		<header class="site-header"/><script type="text/javascript">
-		$.getJSON( "https://apps.overwolf.com/prod/OWStoreExtentions.json", function( data ) {
+		$.getJSON( "get.php", function( data ) {
 			alert(data);
-		});
-		$.ajax({
-		  dataType: 'json',
-		  url: 'https://apps.overwolf.com/prod/OWStoreExtentions.json',
-		 error: function(xhr, status, error) {
-			alert(status);
-			alert(error);
-		  	var err = eval("(" + xhr.responseText + ")");
-		  	alert(err.Message);
- 		},
-		  success: function (json) {
-		    alert(JSON.stringify(json));
-		  }
 		});
 	</script>
 	</body>

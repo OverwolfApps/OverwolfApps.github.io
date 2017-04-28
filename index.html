@@ -1,2 +1,25 @@
 hello world!
-<iframe src="http://apps.overwolf.com/prod/OWStoreExtentions.json.gz"/>
+<script type="text/javascript">
+    $.ajax({
+      url: 'http://apps.overwolf.com/prod/OWStoreExtentions.json.gz',
+      type: 'GET',
+      dataType: 'text',
+      timeout: 1000,
+      error: function(){
+          alert('Error loading document');
+      },
+      success: function(strData, status, xhr){
+        console.log(arguments);
+        console.log(xhr.responseXML, xhr.responseText);
+        var charData    = strData.split('').map(function(x){return x.charCodeAt(0);});
+        // Turn number array into byte-array
+        var binData     = new Uint8Array(charData);
+        // Pako magic
+        var data        = pako.inflate(binData);
+        // Convert gunzipped byteArray back to ascii string:
+        var strData     = String.fromCharCode.apply(null, new Uint8Array(data));
+        // Output to console
+        alert(strData);
+      }
+  });
+</script>

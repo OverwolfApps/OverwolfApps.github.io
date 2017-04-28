@@ -12,11 +12,12 @@
 	<body linkifying="true">
 		<!--header class="site-header"/-->
 		<b1>Test</b1>
-		<div id="jsontotable" class="jsontotable"></div>
+		<div id="jsontotable" class="jsontotable">jsontable</div>
 		<script type="text/javascript">
 			$.getJSON( "https://crossorigin.me/http://apps.overwolf.com/prod/OWStoreExtentions.json", function( data ) {
-				document.currentScript.insertAdjacentHTML('beforebegin', 'test test test');
+				$( "body" ).append( "<p>GOD IS GREAT</p>" );
 				$.jsontotable(data, { id: '#jsontotable', header: false });
+				$( "body" ).append( "<p>REALLY GREAT</p>" );
 			});
 		</script>
 	</body>

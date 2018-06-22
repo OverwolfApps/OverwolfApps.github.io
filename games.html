@@ -11,6 +11,11 @@
 		<h1>Overwolf Games List</h1><br><br>
 		<div id="loading"><h3>Loading...</h3></div>
     <script type="text/javascript">
+      var infoData;
+      $.getJSON( "https://cors-anywhere.herokuapp.com/http://api.overwolf.com/updates/GameListInfo?UID=OW_185d6d74-d0df-4531-a312-6636fd9ca98d&CurrentVersion=0.116.2&PartnerID=3361&GameListVersion=8963075&owver=0.116.2.21&MUID=3dfb3e62-b3ab-4599-af71-e3e6e5969b2b", function( data ) {
+        infoData = data;
+        console.log(infoData);
+      });
       var oReq = new XMLHttpRequest();
       oReq.open("GET", "/myfile.png", true);
       oReq.responseType = "arraybuffer";

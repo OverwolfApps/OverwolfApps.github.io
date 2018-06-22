@@ -7,22 +7,57 @@
 		<meta name="description" content="Overwolf Apps Github Pages">
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="js/gzip.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/common.css">
 	</head>
 	<body linkifying="true">
-		<h1>Overwolf Games List</h1><br><br>
+		<div class="topnav">
+				<a href="//www.overwolf.com/" target="_blank" style="font-family:'KlavikaWebBasicRegular',sans-serif;">Overwolf</a>
+				<a href="index.html">Home</a>
+				<div class="dropdown">
+						<button class="dropbtn">Apps
+								<i class="fa fa-caret-down"></i>
+						</button>
+						<div class="dropdown-content">
+								<a href="apps.html">Normal</a>
+								<a href="apps.html?syntax">with Syntax</a>
+								<a href="apps.html?images">with icons</a>
+								<a href="apps.html?images&syntax">with both</a>
+						</div>
+				</div>
+				<a href="games.html" class="active">Games</a>
+		</div></br></br>
 		<div id="loading"><h3>Loading...</h3></div>
     <script type="text/javascript">
-      $.getJSON( "https://cors-anywhere.herokuapp.com/http://api.overwolf.com/updates/GameListInfo?CurrentVersion=0", function(data) {
+      $.getJSON("https://cors-anywhere.herokuapp.com/http://api.overwolf.com/updates/GameListInfo?CurrentVersion=0", function(data) {
         console.log(data);
 				GameListGzipURL = "https://cors-anywhere.herokuapp.com/" + data["GameListGzipURL"];
+	      $.getJSON(GameListGzipURL, function(GameListGzip) {
+					console.log(GameListGzip);
+				});
+				$.ajax({
+	        type: 'GET',
+	        url:  GameListGzipURL,
+	        headers: {
+						"Accept-Encoding": "text/plain",
+						"Content-encoding": "gzip"
+					},
+	        dataType: "text",
+	        async: true,
+	        success: function(result) {
+							// result = lzw_decode(result);
+	            $("#loading").text(result);
+	        },
+	        error: function(jqXHR, textStatus, errorThrown) {
+	            alert("Issue: " + textStatus + " " + errorThrown + " !");
+	        }
+	    	});
 	      $.get(GameListGzipURL, function(data) {
 					console.log(data);
 					var unzipped = lzw_decode(data);
 					console.log(unzipped);
-		      var element = document.getElementById("loading");
+		      var element = document.getElementById("");
 		      element.innerHTML = unzipped;
 				});
-				return;
 	      var oReq = new XMLHttpRequest();
 	      oReq.open("GET", GameListGzipURL, true);
 	      oReq.responseType = "arraybuffer";

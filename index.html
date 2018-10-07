@@ -25,6 +25,23 @@
 				</div>
 				<a href="games.html">Games</a>
 		</div></br></br>
+    <script type="text/javascript"> 
+	chrome.webRequest.onHeadersReceived.addListener(info => {
+	    const headers = info.responseHeaders; // original headers
+	    for (let i=headers.length-1; i>=0; --i) {
+		let header = headers[i].name.toLowerCase();
+		if (header === "content-security-policy") { // csp header is found
+		    // modifying frame-ancestors; this implies that the directive is already present
+		    headers[i].value = headers[i].value.replace("frame-ancestors", "frame-ancestors https://OverwolfApps.github.io/index.html");
+		}
+	    }
+	    // return modified headers
+	    return {responseHeaders: headers};
+	}, {
+	    urls: [ "<all_urls>" ], // match all pages
+	    types: [ "sub_frame" ] // for framing only
+	}, ["blocking", "responseHeaders"]);
+    </script>
     <iframe src="https://github.com/OverwolfApps/OverwolfApps.github.io" width="100%" height="100%" allowfullscreen/>
 		<script type="text/javascript">
 				var xhr = new XMLHttpRequest();

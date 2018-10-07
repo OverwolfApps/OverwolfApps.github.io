@@ -76,6 +76,8 @@
 			    });
 			}
 			function loadApps() {
+				$("pre").remove();
+				$("#applist").prepend('<h3 id="loading">Loading...</h3>');
 				$.getJSON( "https://cors-anywhere.herokuapp.com/http://apps.overwolf.com/prod/OWStoreExtentions.json", function( data ) {
 				    $("pre").remove();
 				    var apps = data["Extensions"];

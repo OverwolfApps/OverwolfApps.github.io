@@ -79,7 +79,7 @@
 				$.getJSON( "https://cors-anywhere.herokuapp.com/http://apps.overwolf.com/prod/OWStoreExtentions.json", function( data ) {
 				    $("pre").remove();
 				    var apps = data["Extensions"];
-				    $("#appsbutton").text(apps.length+" Apps")
+				    $("#appsbutton").text("Apps ("+apps.length+")")
 				    document.body.appendChild(document.createElement('pre')).innerHTML = syntaxHighlight(apps);
 				    var element = document.getElementById("loading");
 				    element.parentNode.removeChild(element);

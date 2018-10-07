@@ -14,19 +14,22 @@
 				<a href="//www.overwolf.com/" target="_blank" style="font-family:'KlavikaWebBasicRegular',sans-serif;">Overwolf</a>
 				<a href="index.html">Home</a>
 				<div class="dropdown active">
-						<button class="dropbtn">Apps
-								<i class="fa fa-caret-down"></i>
-						</button>
-						<div class="dropdown-content">
-								<a href="apps.html">Normal</a>
-								<a href="apps.html?syntax">with Syntax</a>
-								<a href="apps.html?images">with icons</a>
-								<a href="apps.html?images&syntax">with both</a>
-						</div>
+					<button id="appsbutton" class="dropbtn">Apps
+						<i class="fa fa-caret-down"></i>
+					</button>
+					<div class="dropdown-content">
+						<a href="apps.html">Normal</a>
+						<a href="apps.html?syntax">with Syntax</a>
+						<a href="apps.html?images">with icons</a>
+						<a href="apps.html?images&syntax">with both</a>
+					</div>
 				</div>
 				<a href="games.html">Games</a>
 		</div></br></br>
-		<h3 id="loading">Loading...</h3>
+		<button onclick="loadApps()">Reload</button></br>
+		<div id="applist">
+			<h3 id="loading">Loading...</h3>
+		</div>
 		<!--div id="jsontotable"></div-->
 		<script type="text/javascript">
 			var getUrlParameter = function getUrlParameter(sParam) {
@@ -72,14 +75,17 @@
 				} else { return match; }
 			    });
 			}
-			$.getJSON( "https://cors-anywhere.herokuapp.com/http://apps.overwolf.com/prod/OWStoreExtentions.json", function( data ) {
-			    $("pre").remove();
-			    var apps = data["Extensions"];
-			    document.body.appendChild(document.createElement('pre')).innerHTML = syntaxHighlight(apps);
-			    var element = document.getElementById("loading");
-			    element.parentNode.removeChild(element);
-			    console.log("Finished loading ", apps.lengh,"apps...");
-			});
+			function loadApps() {
+				$.getJSON( "https://cors-anywhere.herokuapp.com/http://apps.overwolf.com/prod/OWStoreExtentions.json", function( data ) {
+				    $("pre").remove();
+				    var apps = data["Extensions"];
+				    document.body.appendChild(document.createElement('pre')).innerHTML = syntaxHighlight(apps);
+				    var element = document.getElementById("loading");
+				    element.parentNode.removeChild(element);
+				    console.log("Finished loading ", apps.lengh,"apps...");
+				});
+			}
+			loadApps();
 		</script>
 	</body>
 </html>
